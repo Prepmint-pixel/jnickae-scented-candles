@@ -102,10 +102,8 @@ export default function Login() {
                     <FormItem>
                       <div className="flex items-center justify-between">
                         <FormLabel className="text-foreground/80">Password</FormLabel>
-                        <Link href="/forgot-password">
-                          <a className="text-xs text-primary hover:text-primary/80 transition-colors">
-                            Forgot password?
-                          </a>
+                        <Link href="/forgot-password" className="text-xs text-primary hover:text-primary/80 transition-colors">
+                          Forgot password?
                         </Link>
                       </div>
                       <FormControl>
@@ -133,10 +131,8 @@ export default function Login() {
             
             <div className="mt-8 text-center text-sm text-muted-foreground">
               Don't have an account?{" "}
-              <Link href="/register">
-                <a className="text-primary hover:text-primary/80 font-medium transition-colors">
-                  Create an account
-                </a>
+              <Link href="/register" className="text-primary hover:text-primary/80 font-medium transition-colors">
+                Create an account
               </Link>
             </div>
           </CardContent>

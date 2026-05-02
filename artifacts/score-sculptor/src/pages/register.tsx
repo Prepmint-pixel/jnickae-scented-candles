@@ -170,10 +170,8 @@ export default function Register() {
             
             <div className="mt-8 text-center text-sm text-muted-foreground">
               Already have an account?{" "}
-              <Link href="/login">
-                <a className="text-primary hover:text-primary/80 font-medium transition-colors">
-                  Log in
-                </a>
+              <Link href="/login" className="text-primary hover:text-primary/80 font-medium transition-colors">
+                Log in
               </Link>
             </div>
           </CardContent>

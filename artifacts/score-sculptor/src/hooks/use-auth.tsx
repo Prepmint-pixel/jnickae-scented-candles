@@ -1,7 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { useGetMe, login, logout, LoginBody } from "@workspace/api-client-react";
+import { useGetMe, login, logout, LoginBody, setAuthTokenGetter } from "@workspace/api-client-react";
 import { User } from "@workspace/api-client-react/src/generated/api.schemas";
 import { useLocation } from "wouter";
+
+// Wire the localStorage token into every API request automatically
+setAuthTokenGetter(() => localStorage.getItem("ss_token"));
 
 interface AuthContextType {
   user: User | null;
