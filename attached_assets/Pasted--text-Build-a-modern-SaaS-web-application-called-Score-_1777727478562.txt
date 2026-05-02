@@ -1,0 +1,344 @@
+```text
+Build a modern SaaS web application called “Score Sculptor™” — an AI-powered credit monitoring and credit education platform focused on consumer credit awareness, FCRA education, Metro 2 compliance education, dispute organization workflows, and credit profile monitoring.
+
+The app should feel like a premium fintech platform similar to Credit Karma, Rocket Money, and modern neobank dashboards combined with an AI assistant experience.
+
+TECH STACK:
+- Frontend: React + TailwindCSS + TypeScript
+- Backend: Node.js + Express
+- Database: PostgreSQL
+- Authentication: JWT/Auth system with secure login
+- Hosting-ready architecture
+- Modular scalable file structure
+- API-ready architecture for future integrations with credit bureau APIs
+- Mobile responsive
+- Dark/light mode toggle
+- Clean fintech UI aesthetic
+
+BRAND:
+Name: Score Sculptor™
+Style:
+- futuristic fintech
+- premium black, white, silver, and cobalt blue color palette
+- sleek glassmorphism cards
+- smooth animations
+- modern typography
+- highly visual dashboards
+
+CORE OBJECTIVE:
+The platform helps users:
+- monitor their credit-related data
+- organize disputes
+- understand credit reporting laws
+- track progress
+- receive AI-powered educational insights
+- learn about FCRA and Metro 2 compliance concepts
+- manage financial improvement goals
+
+IMPORTANT LEGAL REQUIREMENT:
+The software must display:
+“Educational Use Only. Score Sculptor does not provide legal advice.”
+throughout relevant sections.
+
+DO NOT:
+- promise score increases
+- generate illegal dispute tactics
+- provide legal advice
+- claim guaranteed deletions
+
+==================================================
+APP STRUCTURE
+==================================================
+
+1. LANDING PAGE
+Create a modern high-converting homepage with:
+
+Sections:
+- Hero section
+- Credit score visualization graphic
+- AI-powered insights preview
+- Feature showcase
+- Testimonials slider
+- Pricing section
+- FAQ section
+- CTA buttons
+
+Hero headline:
+“Shape Your Credit Future With Precision.”
+
+Subheadline:
+“AI-powered credit monitoring, dispute organization, and financial education built for modern consumers.”
+
+CTA buttons:
+- Get Started
+- View Demo
+
+Add:
+- animated dashboard preview
+- glowing fintech visuals
+- smooth scrolling
+
+==================================================
+2. AUTHENTICATION SYSTEM
+==================================================
+
+Create:
+- sign up page
+- login page
+- forgot password flow
+- email verification
+- secure password encryption
+- session management
+
+User onboarding flow:
+- welcome wizard
+- financial goals questionnaire
+- credit education level selector
+- dashboard personalization
+
+==================================================
+3. MAIN USER DASHBOARD
+==================================================
+
+Build a premium dashboard with widgets.
+
+Dashboard widgets:
+- credit score tracker
+- score trend chart
+- dispute progress tracker
+- negative accounts summary
+- utilization tracker
+- payment reminder widget
+- AI insight widget
+- recent activity feed
+
+Add:
+- animated charts
+- modern cards
+- quick action buttons
+
+Quick actions:
+- Start New Dispute
+- Upload Credit Report
+- Analyze Tradeline
+- Ask AI Assistant
+
+==================================================
+4. CREDIT REPORT ANALYZER
+==================================================
+
+Create a section where users can:
+- upload PDF credit reports
+- parse report data
+- identify negative accounts
+- detect inconsistencies
+- categorize tradelines
+
+Analyzer sections:
+- accounts
+- collections
+- inquiries
+- public records
+- late payments
+
+Add AI analysis:
+- summarize potential inaccuracies
+- identify duplicate accounts
+- identify outdated accounts
+- flag possible reporting inconsistencies
+
+IMPORTANT:
+All outputs must say:
+“Potential reporting inconsistency detected. Verification required.”
+
+==================================================
+5. DISPUTE ORGANIZER SYSTEM
+==================================================
+
+Create a dispute management workflow.
+
+Features:
+- create dispute cases
+- upload supporting documents
+- assign dispute reasons
+- timeline tracking
+- status updates
+
+Statuses:
+- Draft
+- Sent
+- Under Investigation
+- Verified
+- Updated
+- Removed
+
+Create templates for:
+- bureau disputes
+- direct disputes
+- goodwill letters
+- debt validation requests
+
+Add disclaimer before every generated template:
+“Educational Template Only — Not Legal Advice.”
+
+==================================================
+6. AI ASSISTANT SECTION
+==================================================
+
+Create an AI assistant called:
+“Sculpt AI”
+
+Functions:
+- explain FCRA laws
+- explain credit terminology
+- explain Metro 2 concepts
+- summarize disputes
+- answer educational questions
+
+AI rules:
+- cite FCRA sections when relevant
+- refuse illegal requests
+- refuse fake loopholes
+- avoid legal advice
+
+Example AI response style:
+professional
+clear
+step-by-step
+compliance-focused
+
+==================================================
+7. CREDIT EDUCATION HUB
+==================================================
+
+Build a learning center with categories.
+
+Categories:
+- Credit Basics
+- FCRA Rights
+- Metro 2 Education
+- Debt Management
+- Identity Theft
+- Credit Utilization
+- Collections
+
+Features:
+- articles
+- video modules
+- quizzes
+- progress tracking
+
+==================================================
+8. DOCUMENT CENTER
+==================================================
+
+Allow users to:
+- upload documents
+- organize files
+- store dispute letters
+- download generated templates
+
+Create folders:
+- Credit Reports
+- Disputes
+- Identity Docs
+- Letters
+- Notes
+
+==================================================
+9. NOTIFICATIONS SYSTEM
+==================================================
+
+Add:
+- dispute reminders
+- account alerts
+- score change alerts
+- educational reminders
+
+Notification center UI:
+modern dropdown panel
+
+==================================================
+10. ADMIN PANEL
+==================================================
+
+Create admin dashboard with:
+- user management
+- analytics
+- dispute statistics
+- AI usage logs
+- content management
+
+==================================================
+11. DATABASE STRUCTURE
+==================================================
+
+Create scalable database schema for:
+
+Users
+Disputes
+Tradelines
+CreditReports
+Notifications
+Documents
+AIConversations
+EducationModules
+
+==================================================
+12. SECURITY
+==================================================
+
+Implement:
+- encrypted sensitive data
+- rate limiting
+- secure uploads
+- audit logs
+- role permissions
+
+==================================================
+13. FUTURE API READINESS
+==================================================
+
+Structure app so future integrations can be added for:
+- credit bureau APIs
+- Plaid integration
+- AI risk analysis
+- SMS alerts
+- email automation
+
+==================================================
+14. UI/UX REQUIREMENTS
+==================================================
+
+Use:
+- glassmorphism
+- fintech aesthetic
+- smooth hover animations
+- rounded cards
+- modern charts
+- floating sidebar navigation
+
+Sidebar menu:
+- Dashboard
+- Reports
+- Disputes
+- AI Assistant
+- Education Hub
+- Documents
+- Settings
+
+==================================================
+15. FINAL REQUIREMENTS
+==================================================
+
+Generate:
+- complete folder structure
+- reusable components
+- scalable architecture
+- responsive layouts
+- seed demo data
+- onboarding walkthrough
+- clean commented code
+
+The final result should feel like a premium venture-backed fintech SaaS platform with enterprise-grade structure and a polished modern user experience.
+```

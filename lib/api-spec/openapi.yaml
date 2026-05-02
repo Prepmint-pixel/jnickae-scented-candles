@@ -3,20 +3,42 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Score Sculptor API specification
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: auth
+    description: Authentication
+  - name: users
+    description: User management
+  - name: disputes
+    description: Dispute management
+  - name: tradelines
+    description: Tradeline/account management
+  - name: credit-reports
+    description: Credit report management
+  - name: notifications
+    description: Notifications
+  - name: documents
+    description: Document management
+  - name: ai
+    description: AI assistant
+  - name: education
+    description: Education hub
+  - name: dashboard
+    description: Dashboard aggregates
+  - name: admin
+    description: Admin operations
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +46,673 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  # AUTH
+  /auth/register:
+    post:
+      operationId: register
+      tags: [auth]
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterBody"
+      responses:
+        "201":
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+
+  /auth/login:
+    post:
+      operationId: login
+      tags: [auth]
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginBody"
+      responses:
+        "200":
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+
+  /auth/logout:
+    post:
+      operationId: logout
+      tags: [auth]
+      summary: Logout
+      responses:
+        "200":
+          description: Logged out
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  /auth/me:
+    get:
+      operationId: getMe
+      tags: [auth]
+      summary: Get current user
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
+  # DASHBOARD
+  /dashboard/summary:
+    get:
+      operationId: getDashboardSummary
+      tags: [dashboard]
+      summary: Dashboard summary with score, disputes, alerts
+      responses:
+        "200":
+          description: Dashboard summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardSummary"
+
+  /dashboard/activity:
+    get:
+      operationId: getDashboardActivity
+      tags: [dashboard]
+      summary: Recent activity feed
+      responses:
+        "200":
+          description: Activity list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ActivityItem"
+
+  /dashboard/score-history:
+    get:
+      operationId: getScoreHistory
+      tags: [dashboard]
+      summary: Credit score history for chart
+      responses:
+        "200":
+          description: Score history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ScoreHistoryPoint"
+
+  # DISPUTES
+  /disputes:
+    get:
+      operationId: getDisputes
+      tags: [disputes]
+      summary: List disputes
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Disputes list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DisputeListResponse"
+    post:
+      operationId: createDispute
+      tags: [disputes]
+      summary: Create a dispute
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDisputeBody"
+      responses:
+        "201":
+          description: Dispute created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dispute"
+
+  /disputes/{id}:
+    get:
+      operationId: getDispute
+      tags: [disputes]
+      summary: Get dispute by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Dispute
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dispute"
+    patch:
+      operationId: updateDispute
+      tags: [disputes]
+      summary: Update dispute
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateDisputeBody"
+      responses:
+        "200":
+          description: Updated dispute
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dispute"
+    delete:
+      operationId: deleteDispute
+      tags: [disputes]
+      summary: Delete dispute
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  /disputes/stats:
+    get:
+      operationId: getDisputeStats
+      tags: [disputes]
+      summary: Dispute statistics by status
+      responses:
+        "200":
+          description: Stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DisputeStats"
+
+  # TRADELINES
+  /tradelines:
+    get:
+      operationId: getTradelines
+      tags: [tradelines]
+      summary: List tradelines
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Tradelines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tradeline"
+    post:
+      operationId: createTradeline
+      tags: [tradelines]
+      summary: Create tradeline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTradelineBody"
+      responses:
+        "201":
+          description: Tradeline created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tradeline"
+
+  /tradelines/{id}:
+    patch:
+      operationId: updateTradeline
+      tags: [tradelines]
+      summary: Update tradeline
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTradelineBody"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tradeline"
+    delete:
+      operationId: deleteTradeline
+      tags: [tradelines]
+      summary: Delete tradeline
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  /tradelines/summary:
+    get:
+      operationId: getTradelinesSummary
+      tags: [tradelines]
+      summary: Tradeline summary grouped by category and status
+      responses:
+        "200":
+          description: Summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TradelineSummary"
+
+  # CREDIT REPORTS
+  /credit-reports:
+    get:
+      operationId: getCreditReports
+      tags: [credit-reports]
+      summary: List credit reports
+      responses:
+        "200":
+          description: Reports
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CreditReport"
+    post:
+      operationId: createCreditReport
+      tags: [credit-reports]
+      summary: Create/upload credit report record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCreditReportBody"
+      responses:
+        "201":
+          description: Report created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditReport"
+
+  /credit-reports/{id}:
+    get:
+      operationId: getCreditReport
+      tags: [credit-reports]
+      summary: Get credit report
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Report
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditReport"
+
+  # NOTIFICATIONS
+  /notifications:
+    get:
+      operationId: getNotifications
+      tags: [notifications]
+      summary: Get notifications
+      parameters:
+        - name: unreadOnly
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Notification"
+
+  /notifications/{id}/read:
+    patch:
+      operationId: markNotificationRead
+      tags: [notifications]
+      summary: Mark notification as read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notification"
+
+  /notifications/read-all:
+    patch:
+      operationId: markAllNotificationsRead
+      tags: [notifications]
+      summary: Mark all notifications as read
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  # DOCUMENTS
+  /documents:
+    get:
+      operationId: getDocuments
+      tags: [documents]
+      summary: List documents
+      parameters:
+        - name: folder
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Documents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Document"
+    post:
+      operationId: createDocument
+      tags: [documents]
+      summary: Create document record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDocumentBody"
+      responses:
+        "201":
+          description: Document created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Document"
+
+  /documents/{id}:
+    delete:
+      operationId: deleteDocument
+      tags: [documents]
+      summary: Delete document
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  # AI ASSISTANT
+  /ai/conversations:
+    get:
+      operationId: getAiConversations
+      tags: [ai]
+      summary: List AI conversations
+      responses:
+        "200":
+          description: Conversations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AiConversation"
+    post:
+      operationId: createAiConversation
+      tags: [ai]
+      summary: Create new conversation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAiConversationBody"
+      responses:
+        "201":
+          description: Conversation created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AiConversation"
+
+  /ai/conversations/{id}/messages:
+    get:
+      operationId: getAiMessages
+      tags: [ai]
+      summary: Get messages for conversation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AiMessage"
+    post:
+      operationId: sendAiMessage
+      tags: [ai]
+      summary: Send a message to Sculpt AI
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendAiMessageBody"
+      responses:
+        "200":
+          description: AI response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AiMessage"
+
+  # EDUCATION
+  /education/modules:
+    get:
+      operationId: getEducationModules
+      tags: [education]
+      summary: List education modules
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Modules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EducationModule"
+
+  /education/modules/{id}:
+    get:
+      operationId: getEducationModule
+      tags: [education]
+      summary: Get education module detail
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Module
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EducationModule"
+
+  /education/progress:
+    get:
+      operationId: getEducationProgress
+      tags: [education]
+      summary: Get user education progress
+      responses:
+        "200":
+          description: Progress
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EducationProgress"
+
+  # USER PROFILE
+  /users/me:
+    patch:
+      operationId: updateProfile
+      tags: [users]
+      summary: Update user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProfileBody"
+      responses:
+        "200":
+          description: Updated user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
+  # ADMIN
+  /admin/users:
+    get:
+      operationId: adminGetUsers
+      tags: [admin]
+      summary: List all users (admin)
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Users
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminUserListResponse"
+
+  /admin/stats:
+    get:
+      operationId: adminGetStats
+      tags: [admin]
+      summary: Platform-wide stats
+      responses:
+        "200":
+          description: Admin stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminStats"
+
 components:
   schemas:
     HealthStatus:
@@ -31,6 +720,608 @@ components:
       properties:
         status:
           type: string
-      required:
-        - status
+      required: [status]
 
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      required: [message]
+
+    # AUTH SCHEMAS
+    RegisterBody:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+      required: [email, password, firstName, lastName]
+
+    LoginBody:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required: [email, password]
+
+    AuthResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: "#/components/schemas/User"
+      required: [token, user]
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        role:
+          type: string
+          enum: [user, admin]
+        creditGoal:
+          type: string
+          nullable: true
+        educationLevel:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+      required: [id, email, firstName, lastName, role, createdAt]
+
+    UpdateProfileBody:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        creditGoal:
+          type: string
+        educationLevel:
+          type: string
+
+    # DASHBOARD SCHEMAS
+    DashboardSummary:
+      type: object
+      properties:
+        creditScore:
+          type: integer
+        scoreChange:
+          type: integer
+        scoreRating:
+          type: string
+        totalDisputes:
+          type: integer
+        activeDisputes:
+          type: integer
+        resolvedDisputes:
+          type: integer
+        negativeAccounts:
+          type: integer
+        utilizationRate:
+          type: number
+        unreadNotifications:
+          type: integer
+        educationProgress:
+          type: integer
+      required: [creditScore, scoreChange, scoreRating, totalDisputes, activeDisputes, resolvedDisputes, negativeAccounts, utilizationRate, unreadNotifications, educationProgress]
+
+    ActivityItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+      required: [id, type, title, description, createdAt]
+
+    ScoreHistoryPoint:
+      type: object
+      properties:
+        date:
+          type: string
+        score:
+          type: integer
+        bureau:
+          type: string
+      required: [date, score, bureau]
+
+    # DISPUTE SCHEMAS
+    Dispute:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [draft, sent, under_investigation, verified, updated, removed]
+        disputeType:
+          type: string
+          enum: [bureau, direct, goodwill, debt_validation]
+        bureau:
+          type: string
+          nullable: true
+        creditorName:
+          type: string
+          nullable: true
+        accountNumber:
+          type: string
+          nullable: true
+        reason:
+          type: string
+          nullable: true
+        templateContent:
+          type: string
+          nullable: true
+        dueDate:
+          type: string
+          nullable: true
+        resolvedAt:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required: [id, userId, title, description, status, disputeType, createdAt, updatedAt]
+
+    CreateDisputeBody:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        disputeType:
+          type: string
+          enum: [bureau, direct, goodwill, debt_validation]
+        bureau:
+          type: string
+        creditorName:
+          type: string
+        accountNumber:
+          type: string
+        reason:
+          type: string
+        dueDate:
+          type: string
+      required: [title, description, disputeType]
+
+    UpdateDisputeBody:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [draft, sent, under_investigation, verified, updated, removed]
+        bureau:
+          type: string
+        creditorName:
+          type: string
+        accountNumber:
+          type: string
+        reason:
+          type: string
+        templateContent:
+          type: string
+        dueDate:
+          type: string
+        resolvedAt:
+          type: string
+
+    DisputeListResponse:
+      type: object
+      properties:
+        disputes:
+          type: array
+          items:
+            $ref: "#/components/schemas/Dispute"
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+      required: [disputes, total, page, limit]
+
+    DisputeStats:
+      type: object
+      properties:
+        draft:
+          type: integer
+        sent:
+          type: integer
+        under_investigation:
+          type: integer
+        verified:
+          type: integer
+        updated:
+          type: integer
+        removed:
+          type: integer
+        total:
+          type: integer
+      required: [draft, sent, under_investigation, verified, updated, removed, total]
+
+    # TRADELINE SCHEMAS
+    Tradeline:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        creditorName:
+          type: string
+        accountNumber:
+          type: string
+          nullable: true
+        accountType:
+          type: string
+        category:
+          type: string
+          enum: [accounts, collections, inquiries, public_records, late_payments]
+        balance:
+          type: number
+          nullable: true
+        creditLimit:
+          type: number
+          nullable: true
+        paymentStatus:
+          type: string
+          nullable: true
+        isNegative:
+          type: boolean
+        openDate:
+          type: string
+          nullable: true
+        lastActivity:
+          type: string
+          nullable: true
+        bureau:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+      required: [id, userId, creditorName, accountType, category, isNegative, createdAt]
+
+    CreateTradelineBody:
+      type: object
+      properties:
+        creditorName:
+          type: string
+        accountNumber:
+          type: string
+        accountType:
+          type: string
+        category:
+          type: string
+          enum: [accounts, collections, inquiries, public_records, late_payments]
+        balance:
+          type: number
+        creditLimit:
+          type: number
+        paymentStatus:
+          type: string
+        isNegative:
+          type: boolean
+        openDate:
+          type: string
+        lastActivity:
+          type: string
+        bureau:
+          type: string
+        notes:
+          type: string
+      required: [creditorName, accountType, category]
+
+    UpdateTradelineBody:
+      type: object
+      properties:
+        creditorName:
+          type: string
+        accountType:
+          type: string
+        balance:
+          type: number
+        creditLimit:
+          type: number
+        paymentStatus:
+          type: string
+        isNegative:
+          type: boolean
+        notes:
+          type: string
+
+    TradelineSummary:
+      type: object
+      properties:
+        totalAccounts:
+          type: integer
+        negativeAccounts:
+          type: integer
+        positiveAccounts:
+          type: integer
+        collections:
+          type: integer
+        inquiries:
+          type: integer
+        totalBalance:
+          type: number
+        totalCreditLimit:
+          type: number
+        utilizationRate:
+          type: number
+      required: [totalAccounts, negativeAccounts, positiveAccounts, collections, inquiries, totalBalance, totalCreditLimit, utilizationRate]
+
+    # CREDIT REPORT SCHEMAS
+    CreditReport:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        fileName:
+          type: string
+        bureau:
+          type: string
+          nullable: true
+        reportDate:
+          type: string
+          nullable: true
+        creditScore:
+          type: integer
+          nullable: true
+        status:
+          type: string
+          enum: [uploaded, analyzing, analyzed, error]
+        analysisNotes:
+          type: string
+          nullable: true
+        inconsistenciesCount:
+          type: integer
+          nullable: true
+        createdAt:
+          type: string
+      required: [id, userId, fileName, status, createdAt]
+
+    CreateCreditReportBody:
+      type: object
+      properties:
+        fileName:
+          type: string
+        bureau:
+          type: string
+        reportDate:
+          type: string
+        creditScore:
+          type: integer
+      required: [fileName]
+
+    # NOTIFICATION SCHEMAS
+    Notification:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        type:
+          type: string
+          enum: [dispute_reminder, account_alert, score_change, education_reminder, system]
+        title:
+          type: string
+        message:
+          type: string
+        isRead:
+          type: boolean
+        createdAt:
+          type: string
+      required: [id, userId, type, title, message, isRead, createdAt]
+
+    # DOCUMENT SCHEMAS
+    Document:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        fileName:
+          type: string
+        folder:
+          type: string
+          enum: [credit_reports, disputes, identity_docs, letters, notes]
+        fileSize:
+          type: integer
+          nullable: true
+        mimeType:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+      required: [id, userId, fileName, folder, createdAt]
+
+    CreateDocumentBody:
+      type: object
+      properties:
+        fileName:
+          type: string
+        folder:
+          type: string
+          enum: [credit_reports, disputes, identity_docs, letters, notes]
+        fileSize:
+          type: integer
+        mimeType:
+          type: string
+        description:
+          type: string
+      required: [fileName, folder]
+
+    # AI SCHEMAS
+    AiConversation:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        title:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required: [id, userId, title, createdAt, updatedAt]
+
+    CreateAiConversationBody:
+      type: object
+      properties:
+        title:
+          type: string
+      required: [title]
+
+    AiMessage:
+      type: object
+      properties:
+        id:
+          type: integer
+        conversationId:
+          type: integer
+        role:
+          type: string
+          enum: [user, assistant]
+        content:
+          type: string
+        createdAt:
+          type: string
+      required: [id, conversationId, role, content, createdAt]
+
+    SendAiMessageBody:
+      type: object
+      properties:
+        message:
+          type: string
+      required: [message]
+
+    # EDUCATION SCHEMAS
+    EducationModule:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+          enum: [credit_basics, fcra_rights, metro2_education, debt_management, identity_theft, credit_utilization, collections]
+        contentType:
+          type: string
+          enum: [article, video, quiz]
+        difficulty:
+          type: string
+          enum: [beginner, intermediate, advanced]
+        durationMinutes:
+          type: integer
+          nullable: true
+        content:
+          type: string
+          nullable: true
+        order:
+          type: integer
+        createdAt:
+          type: string
+      required: [id, title, description, category, contentType, difficulty, order, createdAt]
+
+    EducationProgress:
+      type: object
+      properties:
+        completedModules:
+          type: integer
+        totalModules:
+          type: integer
+        percentComplete:
+          type: number
+        completedCategories:
+          type: array
+          items:
+            type: string
+        currentStreak:
+          type: integer
+      required: [completedModules, totalModules, percentComplete, completedCategories, currentStreak]
+
+    # ADMIN SCHEMAS
+    AdminUserListResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+      required: [users, total, page, limit]
+
+    AdminStats:
+      type: object
+      properties:
+        totalUsers:
+          type: integer
+        activeUsers:
+          type: integer
+        totalDisputes:
+          type: integer
+        resolvedDisputes:
+          type: integer
+        totalAiMessages:
+          type: integer
+        totalDocuments:
+          type: integer
+        avgCreditScore:
+          type: number
+      required: [totalUsers, activeUsers, totalDisputes, resolvedDisputes, totalAiMessages, totalDocuments, avgCreditScore]
