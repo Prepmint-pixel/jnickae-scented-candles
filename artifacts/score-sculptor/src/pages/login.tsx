@@ -31,8 +31,8 @@ export default function Login() {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "demo@scoresculptor.com",
+      password: "password123",
     },
   });
 
@@ -41,9 +41,13 @@ export default function Login() {
       await loginUser(values);
       setLocation("/dashboard");
     } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      const isCredentials = msg.includes("401") || msg.includes("Invalid");
       toast({
         title: "Login failed",
-        description: "Please check your email and password.",
+        description: isCredentials
+          ? "Invalid email or password. Please try again."
+          : `Connection error — please wait a moment and retry. (${msg.slice(0, 80)})`,
         variant: "destructive",
       });
     }
