@@ -1,4 +1,4 @@
-import { pgTable, text, serial, timestamp, integer, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, timestamp, integer, pgEnum, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { usersTable } from "./users";
@@ -16,6 +16,7 @@ export const creditReportsTable = pgTable("credit_reports", {
   creditScore: integer("credit_score"),
   status: reportStatusEnum("status").notNull().default("uploaded"),
   analysisNotes: text("analysis_notes"),
+  analysisData: jsonb("analysis_data"),
   inconsistenciesCount: integer("inconsistencies_count"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });

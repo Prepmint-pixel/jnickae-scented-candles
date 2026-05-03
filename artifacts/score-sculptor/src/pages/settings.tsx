@@ -104,11 +104,11 @@ export default function Settings() {
                       )}
                     />
                     
-                    <FormItem>
-                      <FormLabel>Email Address</FormLabel>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium leading-none">Email Address</label>
                       <Input value={user?.email} disabled className="bg-muted/50 border-border/50 opacity-70" />
-                      <p className="text-xs text-muted-foreground mt-1">Email cannot be changed.</p>
-                    </FormItem>
+                      <p className="text-xs text-muted-foreground">Email cannot be changed.</p>
+                    </div>
 
                     <FormField
                       control={form.control}
