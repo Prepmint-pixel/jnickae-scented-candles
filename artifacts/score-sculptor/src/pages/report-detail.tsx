@@ -101,9 +101,9 @@ export default function ReportDetail() {
             <Skeleton className="h-24 w-full" />
             <Skeleton className="h-24 w-full" />
           </div>
-        ) : tradelinesData?.tradelines && tradelinesData.tradelines.length > 0 ? (
+        ) : Array.isArray(tradelinesData) && tradelinesData.length > 0 ? (
           <div className="space-y-4">
-            {tradelinesData.tradelines.map((tl) => (
+            {tradelinesData.map((tl) => (
               <Card key={tl.id} className={`border-border/50 backdrop-blur-xl shadow-sm ${tl.isNegative ? 'bg-destructive/5 border-l-4 border-l-destructive' : 'bg-card/60 border-l-4 border-l-green-500'}`}>
                 <CardContent className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex-1">

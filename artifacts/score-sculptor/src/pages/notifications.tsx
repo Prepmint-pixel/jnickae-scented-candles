@@ -57,7 +57,7 @@ export default function Notifications() {
     }
   };
 
-  const unreadCount = notificationsData?.notifications.filter(n => !n.isRead).length || 0;
+  const unreadCount = Array.isArray(notificationsData) ? notificationsData.filter(n => !n.isRead).length : 0;
 
   return (
     <Layout>
@@ -86,8 +86,8 @@ export default function Notifications() {
             Array(5).fill(0).map((_, i) => (
               <Skeleton key={i} className="h-24 w-full rounded-xl" />
             ))
-          ) : notificationsData?.notifications && notificationsData.notifications.length > 0 ? (
-            notificationsData.notifications.map((notification, i) => (
+          ) : Array.isArray(notificationsData) && notificationsData.length > 0 ? (
+            notificationsData.map((notification, i) => (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

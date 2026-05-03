@@ -50,8 +50,8 @@ export default function Documents() {
                 Array(4).fill(0).map((_, i) => (
                   <Skeleton key={i} className="h-32 w-full rounded-xl" />
                 ))
-              ) : data?.documents && data.documents.length > 0 ? (
-                data.documents.map((doc) => (
+              ) : Array.isArray(data) && data.length > 0 ? (
+                data.map((doc) => (
                   <Card key={doc.id} className="border-border/50 bg-card/60 backdrop-blur-xl shadow-sm hover:shadow-md transition-all group">
                     <CardContent className="p-4">
                       <div className="flex items-start gap-4">
