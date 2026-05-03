@@ -70,9 +70,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex flex-col w-72 border-r border-border/40 bg-card/30 backdrop-blur-xl fixed inset-y-0 z-40">
         <div className="h-16 flex items-center px-6 border-b border-border/40">
-          <div className="bg-primary/20 rounded-lg p-1.5 mr-2">
-            <LayoutDashboard className="w-5 h-5 text-primary" />
-          </div>
+          <img src="/logo.png" alt="Score Sculptor Logo" className="w-9 h-9 object-contain mr-2" />
           <span className="font-bold text-xl tracking-tight">Score Sculptor™</span>
         </div>
         <div className="flex-1 overflow-y-auto p-4 space-y-1">
@@ -100,9 +98,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-16 border-b border-border/40 bg-background/80 backdrop-blur-xl z-40 flex items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <div className="bg-primary/20 rounded-lg p-1.5">
-            <LayoutDashboard className="w-5 h-5 text-primary" />
-          </div>
+          <img src="/logo.png" alt="Score Sculptor Logo" className="w-9 h-9 object-contain" />
           <span className="font-bold text-lg tracking-tight">Score Sculptor</span>
         </div>
         <Sheet>

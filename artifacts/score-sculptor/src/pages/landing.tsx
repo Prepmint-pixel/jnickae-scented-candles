@@ -17,9 +17,7 @@ export default function Landing() {
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/60 backdrop-blur-xl">
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-primary rounded-lg p-1.5">
-              <LineChart className="w-5 h-5 text-white" />
-            </div>
+            <img src="/logo.png" alt="Score Sculptor Logo" className="w-9 h-9 object-contain" />
             <span className="font-semibold text-lg tracking-tight">Score Sculptor™</span>
           </div>
           <div className="flex items-center gap-4">

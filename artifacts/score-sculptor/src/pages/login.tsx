@@ -64,9 +64,7 @@ export default function Login() {
         <Card className="border-border/50 bg-card/60 backdrop-blur-xl shadow-2xl">
           <CardHeader className="space-y-3 pb-6">
             <div className="flex items-center justify-center mb-2">
-              <div className="bg-primary/10 p-3 rounded-2xl">
-                <ShieldCheck className="w-8 h-8 text-primary" />
-              </div>
+              <img src="/logo.png" alt="Score Sculptor Logo" className="w-16 h-16 object-contain" />
             </div>
             <CardTitle className="text-2xl font-semibold text-center tracking-tight">
               Welcome back
