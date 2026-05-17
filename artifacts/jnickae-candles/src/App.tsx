@@ -4,6 +4,8 @@ import PromiseSection from "@/components/PromiseSection";
 import CollectionSection from "@/components/CollectionSection";
 import CTAStrip from "@/components/CTAStrip";
 import StorySection from "@/components/StorySection";
+import RitualSection from "@/components/RitualSection";
+import JournalSection from "@/components/JournalSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 
@@ -17,6 +19,8 @@ function App() {
         <CollectionSection />
         <CTAStrip />
         <StorySection />
+        <RitualSection />
+        <JournalSection />
         <NewsletterSection />
       </main>
       <Footer />
