@@ -71,7 +71,7 @@ export default function HeroSection() {
           className="text-[8px] tracking-[0.4em] uppercase font-light"
           style={{ color: "rgba(248,244,236,0.3)", writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
-          New Orleans · Est. 2019
+          Est. 2022 · Georgia
         </span>
         <div className="w-px h-16" style={{ background: "linear-gradient(to bottom, rgba(212,175,55,0.35), transparent)" }} />
       </motion.div>

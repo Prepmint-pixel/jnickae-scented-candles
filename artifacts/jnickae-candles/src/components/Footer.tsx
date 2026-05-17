@@ -56,7 +56,7 @@ export default function Footer() {
               style={{ color: "rgba(248,244,236,0.4)" }}
             >
               Artisan luxury candles for those who live with intention.
-              New Orleans, Louisiana.
+              Georgia.
             </p>
 
             {/* Social links */}

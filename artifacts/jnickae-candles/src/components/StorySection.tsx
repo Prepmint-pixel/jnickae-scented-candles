@@ -4,8 +4,8 @@ import { useRef } from "react";
 const base = import.meta.env.BASE_URL;
 
 const details = [
-  { label: "Founded", value: "2019" },
-  { label: "Origin", value: "New Orleans" },
+  { label: "Founded", value: "2022" },
+  { label: "Origin", value: "Georgia" },
   { label: "Wax", value: "Coconut Soy" },
   { label: "Burn time", value: "70 hrs" },
 ];
@@ -77,7 +77,7 @@ export default function StorySection() {
 
             <div className="space-y-7 mb-14">
               {[
-                "J'Nickae began in a New Orleans kitchen — a daughter learning her grandmother's ritual of lighting a candle before dinner. The scent of orange blossom and cedarwood became the smell of belonging.",
+                "J'Nickae began in a Georgia kitchen — a daughter learning her grandmother's ritual of lighting a candle before dinner. The scent of orange blossom and cedarwood became the smell of belonging.",
                 "We don't make candles to fill a room. We make them to fill a moment — the kind that stays with you for years after the flame has gone cold.",
               ].map((para, i) => (
                 <motion.p
@@ -182,7 +182,7 @@ export default function StorySection() {
                     className="text-[9px] tracking-[0.35em] uppercase"
                     style={{ color: "rgba(248,244,236,0.4)" }}
                   >
-                    Handcrafted in small batches · New Orleans, LA
+                    Handcrafted in small batches · Est. 2022 · Georgia
                   </span>
                 </div>
               </div>

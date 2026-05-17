@@ -3,88 +3,93 @@ import { useRef, useState } from "react";
 
 const base = import.meta.env.BASE_URL;
 
-const products = [
+const scents = [
   {
-    id: 1,
-    name: "Sandalwood Oil",
-    tagline: "Warm, earthy depth — a meditation in wood and smoke.",
-    notes: ["Sandalwood", "Cedarwood", "Warm Musk"],
-    price: "$76",
-    volume: "12 oz · 70 hrs",
-    badge: "Bestseller",
-    featured: true,
-    img: `${base}assets/sandalwood-12oz.png`,
-  },
-  {
-    id: 2,
-    name: "Lavender",
-    tagline: "Soft fields at twilight. Stillness.",
-    notes: ["True Lavender", "Bergamot", "Amber"],
-    price: "$68",
-    volume: "10 oz · 55 hrs",
-    badge: null,
-    featured: false,
-    img: `${base}assets/lavender-10oz.png`,
-  },
-  {
-    id: 3,
-    name: "Peppermint",
-    tagline: "Crisp. Awakening. Unapologetically bold.",
-    notes: ["Peppermint", "Cool Eucalyptus", "Light Musk"],
-    price: "$68",
-    volume: "10 oz · 55 hrs",
-    badge: "New",
-    featured: false,
-    img: `${base}assets/peppermint-10oz.png`,
-  },
-  {
-    id: 4,
-    name: "Mango & Coconut",
-    tagline: "Sun-soaked skin. Golden hour. Never leaving.",
-    notes: ["Ripe Mango", "Coconut Milk", "Vanilla"],
-    price: "$68",
-    volume: "10 oz · 55 hrs",
-    badge: "Limited",
-    featured: false,
-    img: `${base}assets/mango-coconut-10oz.png`,
-  },
-  {
-    id: 5,
+    slug: "eucalyptus",
     name: "Eucalyptus",
-    tagline: "The forest right after rain. Breathe deeply.",
-    notes: ["Eucalyptus", "Mint", "White Cedar"],
-    price: "$68",
-    volume: "10 oz · 55 hrs",
-    badge: null,
-    featured: false,
-    img: `${base}assets/eucalyptus-10oz.png`,
+    description: "Fresh herbal notes that create a calming spa-like atmosphere.",
+    notes: ["Eucalyptus", "Cool Mint", "White Cedar"],
+  },
+  {
+    slug: "lavender",
+    name: "Lavender",
+    description: "Soft floral relaxation crafted for calm evenings and peaceful spaces.",
+    notes: ["True Lavender", "Bergamot", "Amber"],
+  },
+  {
+    slug: "mango-coconut",
+    name: "Mango & Coconut",
+    description: "Creamy tropical sweetness blended with smooth island warmth.",
+    notes: ["Ripe Mango", "Coconut Milk", "Vanilla"],
+  },
+  {
+    slug: "peppermint",
+    name: "Peppermint",
+    description: "Crisp and refreshing with cool invigorating clarity.",
+    notes: ["Peppermint", "Eucalyptus", "Light Musk"],
+  },
+  {
+    slug: "sandalwood",
+    name: "Sandalwood Oil",
+    description: "Warm earthy richness with deep grounding elegance.",
+    notes: ["Sandalwood", "Cedarwood", "Warm Musk"],
+  },
+];
+
+const collections = [
+  {
+    size: "10 oz",
+    price: "$10",
+    burnTime: "55 hrs",
+    label: "10 oz Collection",
+    suffix: "10oz",
+  },
+  {
+    size: "12 oz",
+    price: "$12",
+    burnTime: "70 hrs",
+    label: "12 oz Collection",
+    suffix: "12oz",
   },
 ];
 
 function ProductCard({
-  product,
-  featured,
+  name,
+  slug,
+  description,
+  notes,
+  size,
+  price,
+  burnTime,
+  suffix,
   delay,
   inView,
 }: {
-  product: (typeof products)[0];
-  featured: boolean;
+  name: string;
+  slug: string;
+  description: string;
+  notes: string[];
+  size: string;
+  price: string;
+  burnTime: string;
+  suffix: string;
   delay: number;
   inView: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
+  const imgSrc = `${base}assets/${slug}-${suffix}.png`;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="group relative flex flex-col cursor-pointer overflow-hidden"
       style={{
         background: "#3F0A57",
-        border: hovered ? "1px solid rgba(212,175,55,0.35)" : "1px solid rgba(212,175,55,0.1)",
+        border: `1px solid ${hovered ? "rgba(212,175,55,0.4)" : "rgba(212,175,55,0.1)"}`,
         transition: "border-color 0.4s ease",
       }}
     >
@@ -92,90 +97,86 @@ function ProductCard({
       <motion.div
         className="absolute top-0 left-0 right-0 h-px z-20"
         style={{ background: "#D4AF37" }}
-        animate={{ scaleX: hovered ? 1 : 0, opacity: hovered ? 0.8 : 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        animate={{ scaleX: hovered ? 1 : 0, opacity: hovered ? 0.9 : 0 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       />
 
       {/* Image area */}
       <div
         className="relative overflow-hidden flex-shrink-0"
-        style={{ height: featured ? "clamp(380px, 42vw, 560px)" : "clamp(240px, 24vw, 310px)" }}
+        style={{ height: "clamp(200px, 20vw, 280px)" }}
       >
-        {/* Purple backdrop */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, #3F0A57 0%, #2B003B 100%)" }} />
-
-        {/* Product image */}
-        <motion.img
-          src={product.img}
-          alt={product.name}
-          className="absolute inset-0 w-full h-full object-contain object-center"
-          style={{ padding: featured ? "1.5rem" : "1rem" }}
-          animate={{ scale: hovered ? 1.04 : 1, y: hovered ? -6 : 0 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(160deg, #3F0A57 0%, #2B003B 100%)" }}
         />
 
-        {/* Glow under product */}
+        <motion.img
+          src={imgSrc}
+          alt={`${name} ${size} candle`}
+          className="absolute inset-0 w-full h-full object-contain"
+          style={{ padding: "1rem" }}
+          animate={{ scale: hovered ? 1.05 : 1, y: hovered ? -5 : 0 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+        />
+
+        {/* Ambient glow under product */}
         <motion.div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-32 rounded-full"
-          animate={{ opacity: hovered ? 0.45 : 0.2 }}
-          transition={{ duration: 0.8 }}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-20 rounded-full"
+          animate={{ opacity: hovered ? 0.5 : 0.2 }}
+          transition={{ duration: 0.7 }}
           style={{
-            background: "radial-gradient(ellipse, rgba(212,175,55,0.25) 0%, transparent 70%)",
-            filter: "blur(20px)",
+            background: "radial-gradient(ellipse, rgba(212,175,55,0.22) 0%, transparent 70%)",
+            filter: "blur(16px)",
           }}
         />
 
-        {/* Badge */}
-        {product.badge && (
-          <div className="absolute top-4 left-4 z-10">
-            <span
-              className="text-[7px] tracking-[0.35em] uppercase px-3 py-1.5 font-medium"
-              style={{
-                color: "#D4AF37",
-                border: "1px solid rgba(212,175,55,0.35)",
-                background: "rgba(43,0,59,0.75)",
-                backdropFilter: "blur(4px)",
-              }}
-            >
-              {product.badge}
-            </span>
-          </div>
-        )}
+        {/* Size badge */}
+        <div className="absolute top-3 left-3 z-10">
+          <span
+            className="text-[7px] tracking-[0.3em] uppercase px-2.5 py-1"
+            style={{
+              color: "#D4AF37",
+              border: "1px solid rgba(212,175,55,0.3)",
+              background: "rgba(43,0,59,0.7)",
+              backdropFilter: "blur(4px)",
+            }}
+          >
+            {size}
+          </span>
+        </div>
       </div>
 
       {/* Card body */}
       <div
-        className="flex flex-col p-6 md:p-7 gap-4"
+        className="flex flex-col p-5 gap-3 flex-1"
         style={{ borderTop: "1px solid rgba(212,175,55,0.1)" }}
       >
         {/* Name */}
-        <div>
-          <h3
-            className="font-display font-light leading-tight mb-1"
-            style={{
-              fontSize: featured ? "clamp(1.6rem, 2.5vw, 2.2rem)" : "clamp(1.3rem, 2vw, 1.6rem)",
-              color: "#F8F4EC",
-            }}
-          >
-            {product.name}
-          </h3>
-          <p
-            className="text-[11px] italic font-light leading-relaxed"
-            style={{ color: "rgba(248,244,236,0.45)" }}
-          >
-            {product.tagline}
-          </p>
-        </div>
+        <h3
+          className="font-display font-light leading-tight"
+          style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)", color: "#F8F4EC" }}
+        >
+          {name}
+        </h3>
+
+        {/* Description */}
+        <p
+          className="text-[11px] font-light leading-relaxed flex-1"
+          style={{ color: "rgba(248,244,236,0.45)" }}
+        >
+          {description}
+        </p>
 
         {/* Scent notes */}
-        <div className="flex flex-wrap gap-1.5">
-          {product.notes.map((note) => (
+        <div className="flex flex-wrap gap-1">
+          {notes.map((note) => (
             <span
               key={note}
-              className="text-[8px] tracking-[0.2em] uppercase px-2.5 py-1.5"
+              className="text-[7px] tracking-[0.18em] uppercase px-2 py-1"
               style={{
-                color: "rgba(212,175,55,0.7)",
-                border: "1px solid rgba(212,175,55,0.15)",
+                color: "rgba(212,175,55,0.65)",
+                border: "1px solid rgba(212,175,55,0.13)",
               }}
             >
               {note}
@@ -184,27 +185,32 @@ function ProductCard({
         </div>
 
         {/* Price row */}
-        <div className="flex items-center justify-between pt-1">
+        <div
+          className="flex items-center justify-between pt-2"
+          style={{ borderTop: "1px solid rgba(212,175,55,0.08)" }}
+        >
           <span
             className="font-display font-light"
-            style={{ fontSize: "1.4rem", color: "#D4AF37" }}
+            style={{ fontSize: "1.3rem", color: "#D4AF37" }}
           >
-            {product.price}
+            {price}
           </span>
           <span
-            className="text-[8px] tracking-[0.25em] uppercase"
-            style={{ color: "rgba(248,244,236,0.3)" }}
+            className="text-[8px] tracking-[0.2em] uppercase"
+            style={{ color: "rgba(248,244,236,0.28)" }}
           >
-            {product.volume}
+            {burnTime}
           </span>
         </div>
 
-        {/* Add to cart */}
+        {/* Add to cart — hover reveal */}
         <motion.button
-          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full py-3.5 text-[9px] tracking-[0.35em] uppercase font-medium transition-colors duration-200"
+          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 8 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full py-3 text-[8px] tracking-[0.35em] uppercase font-medium transition-colors duration-200"
           style={{ background: "#D4AF37", color: "#2B003B" }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "#e2c04a")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "#D4AF37")}
         >
           Add to Cart
         </motion.button>
@@ -215,10 +221,7 @@ function ProductCard({
 
 export default function CollectionSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.1 });
-
-  const featured = products[0];
-  const supporting = products.slice(1);
+  const inView = useInView(ref, { once: true, amount: 0.08 });
 
   return (
     <section
@@ -264,44 +267,75 @@ export default function CollectionSection() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 1, delay: 0.3 }}
-            className="flex flex-col items-start md:items-end gap-2 self-start md:self-auto"
+            className="self-start md:self-auto flex flex-col items-start md:items-end gap-2"
           >
             <a
               href="#"
               className="group flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase transition-colors"
               style={{ color: "#D4AF37" }}
             >
-              View All Scents
+              Shop All
               <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 12 12" fill="none">
                 <path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
             <span className="text-[8px] tracking-[0.2em]" style={{ color: "rgba(248,244,236,0.3)" }}>
-              Free shipping on orders over $95
+              Free shipping on orders over $50
             </span>
           </motion.div>
         </div>
 
-        {/* Asymmetric editorial grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-px" style={{ background: "rgba(212,175,55,0.08)" }}>
-          {/* Featured — large left card */}
-          <div className="lg:col-span-5">
-            <ProductCard product={featured} featured delay={0.15} inView={inView} />
-          </div>
+        {/* Two collection groups */}
+        {collections.map((col, colIdx) => (
+          <div key={col.suffix} className={colIdx === 1 ? "mt-20 md:mt-28" : ""}>
+            {/* Collection label */}
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.9, delay: colIdx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center gap-5 mb-8 md:mb-12"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-px" style={{ background: "rgba(212,175,55,0.5)" }} />
+                <span
+                  className="text-[9px] tracking-[0.4em] uppercase font-medium"
+                  style={{ color: "#D4AF37" }}
+                >
+                  {col.label}
+                </span>
+              </div>
+              <div className="flex-1 h-px" style={{ background: "rgba(212,175,55,0.07)" }} />
+              <span
+                className="font-display font-light text-xl"
+                style={{ color: "rgba(212,175,55,0.5)" }}
+              >
+                {col.price}
+              </span>
+            </motion.div>
 
-          {/* Supporting — 2x2 right grid */}
-          <div className="lg:col-span-7 grid grid-cols-2 gap-px" style={{ background: "rgba(212,175,55,0.08)" }}>
-            {supporting.map((product, i) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                featured={false}
-                delay={0.22 + i * 0.1}
-                inView={inView}
-              />
-            ))}
+            {/* 5-column product grid */}
+            <div
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px"
+              style={{ background: "rgba(212,175,55,0.07)" }}
+            >
+              {scents.map((scent, i) => (
+                <ProductCard
+                  key={`${scent.slug}-${col.suffix}`}
+                  name={scent.name}
+                  slug={scent.slug}
+                  description={scent.description}
+                  notes={scent.notes}
+                  size={col.size}
+                  price={col.price}
+                  burnTime={col.burnTime}
+                  suffix={col.suffix}
+                  delay={colIdx * 0.1 + i * 0.08}
+                  inView={inView}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
