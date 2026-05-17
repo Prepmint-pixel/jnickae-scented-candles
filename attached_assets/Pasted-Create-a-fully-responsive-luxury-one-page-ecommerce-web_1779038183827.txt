@@ -1,0 +1,274 @@
+Create a fully responsive luxury one-page ecommerce website for a premium candle brand called “J’Nickae Candles.”
+
+The website aesthetic must closely resemble:
+
+* high-end fragrance editorials
+* cinematic luxury candle brands
+* modern perfume campaign websites
+* moody boutique Shopify stores
+* elegant minimal luxury branding
+
+The visual direction should be:
+
+* rich dark royal purple gradients
+* metallic gold accents
+* soft glowing particles
+* minimal luxury typography
+* cinematic atmosphere
+* sophisticated negative spacing
+* elegant serif fonts
+* soft ambient motion
+* premium editorial composition
+
+Use these colors:
+
+* Deep Royal Purple #2B003B
+* Rich Velvet Purple #3F0A57
+* Luxury Gold #D4AF37
+* Soft Cream #F8F4EC
+* Black #0B0B0B
+
+Typography Style:
+
+* Elegant luxury serif typography for headings
+* Thin editorial letter spacing
+* Small uppercase navigation text
+* Refined italic body copy
+* Large cinematic hero typography
+
+DO NOT create a generic ecommerce website.
+DO NOT use cluttered Shopify layouts.
+DO NOT use bright modern startup aesthetics.
+The experience should feel artistic, luxurious, atmospheric, and immersive.
+
+FULL WEBSITE STRUCTURE:
+
+---
+
+1. HERO SECTION
+
+---
+
+Create a full-screen cinematic hero section using the uploaded purple luxury candle lifestyle image.
+
+Navigation:
+
+* J’Nickae logo top left
+* Collection
+* Our Promise
+* Heritage
+* Shop
+
+Transparent navigation with subtle blur effect.
+
+Center the hero content vertically.
+
+Hero text:
+EST. 2022 • TAMPA, FLORIDA
+
+Main headline:
+J’NICKAE
+CANDLES
+
+Subheadline:
+100% NATURAL • MADE WITH LOVE
+
+Luxury paragraph:
+“10 oz. soy wax candles, hand-poured with intention.
+Each flame carries a story. Each scent, a sanctuary.”
+
+Luxury gold outlined button:
+“EXPLORE THE COLLECTION”
+
+Background effects:
+
+* floating gold dust particles
+* soft candle flicker glow
+* subtle animated ambient gradients
+* cinematic depth blur
+
+Include a softly animated candle flame icon near bottom center.
+
+---
+
+2. OUR PROMISE SECTION
+
+---
+
+Section title:
+OUR PROMISE
+
+Headline:
+THE NATURAL DIFFERENCE
+
+Create 3 elegant luxury feature cards:
+
+* 100% Natural
+* 10 oz. Crafted
+* Made With Love
+
+Cards should have:
+
+* subtle gold borders
+* transparent glass effect
+* soft hover glow
+* minimalist luxury spacing
+* small emoji or luxury icons
+
+Typography should feel editorial and refined.
+
+---
+
+3. SIGNATURE SCENT LIBRARY
+
+---
+
+Section title:
+THE COLLECTION
+
+Headline:
+SIGNATURE SCENT LIBRARY
+
+Use uploaded product images.
+
+Create asymmetrical editorial product grid inspired by luxury fragrance websites.
+
+Featured scents:
+
+* Sandalwood Oil
+* Peppermint
+* Mango & Coconut
+* Lavender
+* Eucalyptus
+
+Each scent card should include:
+
+* product image
+* scent number (No. 001 etc.)
+* luxury scent description
+* elegant tags
+* Shop Now link
+* smooth hover animation
+
+Pricing:
+
+* 10 oz candles = $10
+* 12 oz candles = $12
+
+Descriptions:
+Sandalwood Oil:
+“Warm, rich, and deeply grounding. Sandalwood wraps the senses in earthy elegance.”
+
+Peppermint:
+“Crisp and invigorating. A breath of cool clarity that awakens the spirit.”
+
+Mango & Coconut:
+“Creamy tropical sweetness blended with smooth island warmth.”
+
+Lavender:
+“Soft floral relaxation crafted for moments of calm and comfort.”
+
+Eucalyptus:
+“Fresh herbal notes that create a spa-like atmosphere of renewal.”
+
+Use cinematic hover transitions and luxury spacing.
+
+---
+
+4. HERITAGE / STORY SECTION
+
+---
+
+Create a large centered storytelling section.
+
+Include glowing circular emblem with:
+2022
+
+Section title:
+OUR STORY
+
+Quote:
+“Every J’Nickae candle begins with a simple belief — that the finest things in life should be natural, intentional, and made with love.”
+
+Subtext:
+“Handcrafted since 2022”
+
+Background should include:
+
+* soft animated gradients
+* cinematic purple glow
+* elegant gold separators
+* subtle texture overlays
+
+---
+
+5. EMAIL SIGNUP SECTION
+
+---
+
+Luxury newsletter section.
+
+Headline:
+Join The J’Nickae Experience
+
+Subheadline:
+“Receive exclusive scent releases, special offers, and luxury candle inspiration.”
+
+Luxury email form with:
+
+* gold outline input
+* elegant black/purple background
+* glowing gold button
+
+---
+
+6. FOOTER
+
+---
+
+Luxury minimal footer with:
+J’NICKAE
+
+Subtext:
+100% Natural • Soy Wax • Made with Love
+
+Footer links:
+
+* Collection
+* Heritage
+* Contact
+* Instagram
+
+Bottom text:
+© 2026 J’Nickae Candles • EST. 2022
+
+---
+
+## ADDITIONAL DESIGN REQUIREMENTS
+
+* Fully responsive on all devices
+* Smooth scrolling
+* Cinematic luxury feel
+* Use subtle motion only
+* No clutter
+* No oversized buttons
+* No generic ecommerce layouts
+* Prioritize editorial luxury aesthetics
+* Add soft glowing effects throughout
+* Add subtle parallax movement
+* Maintain fast performance
+* Create immersive atmosphere
+* Luxury serif typography is critical
+* Use spacing similar to premium fragrance campaigns
+
+Website inspiration should feel comparable to:
+
+* Diptyque
+* Jo Malone
+* Tom Ford Beauty
+* Maison Louis Marie
+* Byredo
+* luxury perfume editorials
+
+Overall mood:
+“Luxury candle experience meets cinematic fragrance storytelling.”

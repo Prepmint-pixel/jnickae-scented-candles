@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-gold: hsl(var(--gold));
+  --color-ivory: hsl(var(--ivory));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  /* Luxury dark palette — always dark */
+  --background: 30 8% 6%;
+  --foreground: 36 25% 85%;
+
+  --card: 30 6% 10%;
+  --card-foreground: 36 25% 85%;
+
+  --border: 36 10% 16%;
+  --input: 36 10% 16%;
+  --ring: 36 52% 57%;
+
+  --primary: 36 52% 57%;
+  --primary-foreground: 30 8% 6%;
+
+  --secondary: 30 6% 14%;
+  --secondary-foreground: 36 20% 75%;
+
+  --muted: 30 6% 13%;
+  --muted-foreground: 36 12% 52%;
+
+  --accent: 36 52% 57%;
+  --accent-foreground: 30 8% 6%;
+
+  --gold: 36 52% 57%;
+  --ivory: 36 40% 92%;
+
+  --app-font-sans: 'Inter', sans-serif;
+  --app-font-serif: 'Cormorant Garamond', Georgia, serif;
+  --app-font-mono: Menlo, monospace;
+  --radius: 0.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border box-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--app-font-sans);
+    background-color: hsl(30, 8%, 6%);
+    color: hsl(36, 25%, 85%);
+  }
+
+  ::selection {
+    background: hsl(36, 52%, 57%, 0.3);
+    color: hsl(36, 40%, 92%);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .text-gold {
+    color: hsl(36, 52%, 57%);
+  }
+
+  .text-ivory {
+    color: hsl(36, 40%, 92%);
+  }
+
+  .bg-gold {
+    background-color: hsl(36, 52%, 57%);
+  }
+
+  .border-gold {
+    border-color: hsl(36, 52%, 57%);
+  }
+
+  .border-gold\/20 {
+    border-color: hsl(36 52% 57% / 0.2);
+  }
+
+  .border-gold\/40 {
+    border-color: hsl(36 52% 57% / 0.4);
+  }
+
+  .gold-glow {
+    text-shadow: 0 0 40px hsl(36 52% 57% / 0.3);
+  }
+
+  .letter-widest {
+    letter-spacing: 0.3em;
+  }
+
+  .letter-ultra {
+    letter-spacing: 0.5em;
+  }
+
+  .candle-gradient {
+    background: radial-gradient(
+      ellipse 60% 80% at 50% 100%,
+      hsl(36 52% 57% / 0.08) 0%,
+      transparent 70%
+    );
+  }
+}
