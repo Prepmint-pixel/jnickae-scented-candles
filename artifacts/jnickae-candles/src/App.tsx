@@ -2,18 +2,20 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import PromiseSection from "@/components/PromiseSection";
 import CollectionSection from "@/components/CollectionSection";
+import CTAStrip from "@/components/CTAStrip";
 import StorySection from "@/components/StorySection";
 import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[hsl(30,8%,6%)] text-[hsl(36,25%,85%)] overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden" style={{ background: "#2B003B", color: "#F8F4EC" }}>
       <Navbar />
       <main>
         <HeroSection />
         <PromiseSection />
         <CollectionSection />
+        <CTAStrip />
         <StorySection />
         <NewsletterSection />
       </main>

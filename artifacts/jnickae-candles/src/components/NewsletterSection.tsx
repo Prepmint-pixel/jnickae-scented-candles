@@ -131,7 +131,9 @@ export default function NewsletterSection() {
                     className="w-full px-7 py-5 text-[13px] font-light tracking-wide outline-none transition-colors duration-400"
                     style={{
                       background: "rgba(43,0,59,0.6)",
-                      border: `1px solid ${focused ? "rgba(212,175,55,0.55)" : "rgba(212,175,55,0.15)"}`,
+                      borderTop: `1px solid ${focused ? "rgba(212,175,55,0.55)" : "rgba(212,175,55,0.15)"}`,
+                      borderLeft: `1px solid ${focused ? "rgba(212,175,55,0.55)" : "rgba(212,175,55,0.15)"}`,
+                      borderBottom: `1px solid ${focused ? "rgba(212,175,55,0.55)" : "rgba(212,175,55,0.15)"}`,
                       borderRight: "none",
                       color: "#F8F4EC",
                     }}
