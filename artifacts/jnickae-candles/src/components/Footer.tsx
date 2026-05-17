@@ -123,6 +123,28 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+
+            {/* Contact */}
+            <div className="mt-8 pt-8" style={{ borderTop: "1px solid rgba(212,175,55,0.1)" }}>
+              <p className="text-[8px] tracking-[0.4em] uppercase mb-4" style={{ color: "rgba(212,175,55,0.45)" }}>
+                Order &amp; Enquiries
+              </p>
+              <p className="text-[12px] font-light mb-3 leading-relaxed" style={{ color: "rgba(248,244,236,0.38)" }}>
+                DM us on social to place an order
+              </p>
+              <a
+                href="tel:+14704696270"
+                className="inline-flex items-center gap-2 text-[13px] font-light transition-colors duration-300"
+                style={{ color: "rgba(248,244,236,0.55)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#D4AF37")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(248,244,236,0.55)")}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "rgba(212,175,55,0.55)" }}>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.44 2 2 0 0 1 3.55 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" />
+                </svg>
+                (470) 469-6270
+              </a>
+            </div>
           </motion.div>
 
           <div className="hidden md:block md:col-span-1" />
