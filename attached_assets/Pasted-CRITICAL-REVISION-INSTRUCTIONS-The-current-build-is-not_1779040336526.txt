@@ -1,0 +1,181 @@
+CRITICAL REVISION INSTRUCTIONS:
+
+The current build is not correctly using the uploaded brand assets or color palette.
+
+Fix the website to EXACTLY match the uploaded J’Nickae branding and uploaded product assets.
+
+MANDATORY REQUIREMENTS:
+
+USE THE UPLOADED HERO IMAGE
+
+Replace the current hero background immediately.
+
+Use the uploaded cinematic luxury candle lifestyle image as the full-screen hero section background.
+
+Hero image must fully cover the viewport.
+
+Apply a dark purple overlay gradient on top of the image for readability.
+
+Add subtle cinematic blur and glow effects.
+
+USE THE EXACT BRAND COLORS
+Primary Background:
+#2B003B
+
+Secondary Purple:
+#3F0A57
+
+Luxury Gold:
+#D4AF37
+
+Cream Text:
+#F8F4EC
+
+DO NOT replace these with blue, magenta, or generic gradients.
+
+The ENTIRE website should maintain:
+
+dark velvet purple backgrounds
+
+soft gold accents
+
+luxury editorial contrast
+
+USE THE ACTUAL UPLOADED PRODUCT IMAGES
+The candle product cards MUST use the uploaded PNG candle images.
+
+Required product images:
+
+Sandalwood Oil
+
+Peppermint
+
+Mango & Coconut
+
+Lavender
+
+Eucalyptus
+
+DO NOT generate placeholders.
+DO NOT create AI-generated substitute candles.
+DO NOT use stock images.
+
+FIX THE PRODUCT GRID
+Create an editorial luxury asymmetrical product layout.
+
+Use:
+
+large featured card for Sandalwood
+
+smaller supporting cards for remaining scents
+
+cinematic spacing
+
+luxury hover effects
+
+subtle floating animations
+
+ADD IMAGE PATH SUPPORT
+Ensure all uploaded assets are properly imported and rendered correctly.
+
+Use proper React imports for local image assets.
+
+Example:
+import heroImage from "./assets/hero-image.png";
+
+DO NOT leave broken image placeholders.
+
+MAKE THE WEBSITE FEEL CINEMATIC
+Current design feels too generic.
+
+Improve:
+
+typography hierarchy
+
+spacing
+
+cinematic atmosphere
+
+ambient glow effects
+
+subtle floating particles
+
+elegant serif typography
+
+immersive luxury feel
+
+HERO SECTION MUST MATCH THE REFERENCE STYLE
+Requirements:
+
+centered typography
+
+oversized luxury serif heading
+
+cinematic negative space
+
+gold accent typography
+
+elegant button styling
+
+subtle candle glow animation
+
+USE FULL-WIDTH LUXURY SECTIONS
+Avoid boxed-in layouts.
+
+The website should feel:
+
+immersive
+
+expansive
+
+editorial
+
+atmospheric
+
+MOBILE RESPONSIVENESS
+Ensure:
+
+responsive typography
+
+responsive product cards
+
+no overflow
+
+optimized mobile spacing
+
+touch-friendly interactions
+
+FINAL GOAL
+The final website should resemble:
+
+luxury fragrance campaigns
+
+Diptyque
+
+Jo Malone
+
+Byredo
+
+cinematic Shopify luxury brands
+
+NOT:
+
+startup templates
+
+generic ecommerce themes
+
+bootstrap layouts
+
+default Tailwind demos
+
+PRIORITIZE:
+
+atmosphere
+
+elegance
+
+cinematic storytelling
+
+luxury branding
+
+immersive visuals Use images from /public/assets

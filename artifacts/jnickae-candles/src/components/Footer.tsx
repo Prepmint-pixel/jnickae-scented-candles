@@ -12,18 +12,23 @@ export default function Footer() {
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <footer ref={ref} className="relative overflow-hidden">
+    <footer
+      ref={ref}
+      className="relative overflow-hidden"
+      style={{ background: "#2B003B" }}
+    >
       {/* Top gold divider */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={inView ? { scaleX: 1 } : {}}
         transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
         className="h-px origin-left"
-        style={{ background: "linear-gradient(to right, hsl(36,52%,57%,0.4), hsl(36,52%,57%,0.15), transparent)" }}
+        style={{ background: "linear-gradient(to right, rgba(212,175,55,0.5), rgba(212,175,55,0.15), transparent)" }}
       />
 
+      {/* Grain */}
       <div
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
           backgroundSize: "160px",
@@ -41,37 +46,47 @@ export default function Footer() {
             className="md:col-span-4"
           >
             <p
-              className="font-display font-light tracking-[0.12em] text-[hsl(36,40%,92%)] mb-5"
-              style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)" }}
+              className="font-display font-light tracking-[0.12em] mb-5"
+              style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: "#F8F4EC" }}
             >
               J'Nickae
             </p>
-            <p className="text-[12px] md:text-[13px] text-[hsl(36,12%,40%)] leading-[1.9] font-light mb-10 max-w-[220px]">
-              Artisan luxury candles for those
-              who live with intention.
+            <p
+              className="text-[12px] md:text-[13px] leading-[1.9] font-light mb-10 max-w-[220px]"
+              style={{ color: "rgba(248,244,236,0.4)" }}
+            >
+              Artisan luxury candles for those who live with intention.
               New Orleans, Louisiana.
             </p>
 
             {/* Social links */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               {[
-                { name: "Instagram", icon: "IG" },
-                { name: "Pinterest", icon: "PT" },
-                { name: "TikTok", icon: "TK" },
+                { name: "Instagram", abbr: "IG" },
+                { name: "Pinterest", abbr: "PT" },
+                { name: "TikTok", abbr: "TK" },
               ].map((platform) => (
                 <a
                   key={platform.name}
                   href="#"
-                  className="group relative flex items-center justify-center w-9 h-9 border border-[hsl(36,10%,18%)] text-[8px] tracking-widest text-[hsl(36,12%,38%)] hover:border-[hsl(36,52%,57%,0.4)] hover:text-[hsl(36,52%,57%)] transition-all duration-400"
                   aria-label={platform.name}
+                  className="flex items-center justify-center w-9 h-9 text-[8px] tracking-widest transition-all duration-400"
+                  style={{ border: "1px solid rgba(212,175,55,0.18)", color: "rgba(248,244,236,0.35)" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(212,175,55,0.5)";
+                    e.currentTarget.style.color = "#D4AF37";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(212,175,55,0.18)";
+                    e.currentTarget.style.color = "rgba(248,244,236,0.35)";
+                  }}
                 >
-                  {platform.icon}
+                  {platform.abbr}
                 </a>
               ))}
             </div>
           </motion.div>
 
-          {/* Spacer */}
           <div className="hidden md:block md:col-span-1" />
 
           {/* Link columns */}
@@ -84,8 +99,8 @@ export default function Footer() {
               className="md:col-span-2"
             >
               <div className="flex items-center gap-3 mb-7">
-                <div className="w-4 h-px bg-[hsl(36,52%,57%,0.5)]" />
-                <p className="text-[8px] tracking-[0.4em] uppercase text-[hsl(36,52%,57%)]">
+                <div className="w-4 h-px" style={{ background: "rgba(212,175,55,0.5)" }} />
+                <p className="text-[8px] tracking-[0.4em] uppercase" style={{ color: "#D4AF37" }}>
                   {category}
                 </p>
               </div>
@@ -94,9 +109,11 @@ export default function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="group text-[12px] md:text-[13px] text-[hsl(36,10%,40%)] hover:text-[hsl(36,25%,72%)] transition-colors duration-300 font-light flex items-center gap-0 hover:gap-2"
+                      className="text-[12px] md:text-[13px] font-light transition-colors duration-300"
+                      style={{ color: "rgba(248,244,236,0.38)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(248,244,236,0.75)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(248,244,236,0.38)")}
                     >
-                      <span className="w-0 overflow-hidden group-hover:w-3 transition-all duration-300 text-[hsl(36,52%,57%,0.5)] text-[8px]">→</span>
                       {link}
                     </a>
                   </li>
@@ -107,12 +124,12 @@ export default function Footer() {
         </div>
 
         {/* Large brand watermark */}
-        <div className="relative mb-16">
+        <div className="relative mb-16 overflow-hidden">
           <div
-            className="font-display font-light text-center select-none pointer-events-none overflow-hidden"
+            className="font-display font-light text-center select-none pointer-events-none"
             style={{
               fontSize: "clamp(5rem, 18vw, 18rem)",
-              color: "hsl(36,52%,57%,0.025)",
+              color: "rgba(212,175,55,0.03)",
               lineHeight: 0.85,
               letterSpacing: "0.04em",
             }}
@@ -124,9 +141,9 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="flex flex-col md:flex-row items-center justify-between gap-5 pt-8"
-          style={{ borderTop: "1px solid hsl(36,10%,11%)" }}
+          style={{ borderTop: "1px solid rgba(212,175,55,0.08)" }}
         >
-          <p className="text-[9px] tracking-[0.2em] text-[hsl(36,8%,28%)]">
+          <p className="text-[9px] tracking-[0.2em]" style={{ color: "rgba(248,244,236,0.25)" }}>
             © {new Date().getFullYear()} J'Nickae Candles. All rights reserved.
           </p>
           <div className="flex items-center gap-8">
@@ -134,7 +151,10 @@ export default function Footer() {
               <a
                 key={item}
                 href="#"
-                className="text-[9px] tracking-[0.2em] text-[hsl(36,8%,28%)] hover:text-[hsl(36,52%,57%)] transition-colors duration-300"
+                className="text-[9px] tracking-[0.2em] transition-colors duration-300"
+                style={{ color: "rgba(248,244,236,0.25)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#D4AF37")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(248,244,236,0.25)")}
               >
                 {item}
               </a>

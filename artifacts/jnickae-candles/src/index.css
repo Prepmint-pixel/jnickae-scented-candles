@@ -4,65 +4,53 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-gold: hsl(var(--gold));
-  --color-ivory: hsl(var(--ivory));
-
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
   --font-mono: var(--app-font-mono);
-
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
 }
 
 :root {
-  /* Luxury dark palette — always dark */
-  --background: 30 8% 6%;
-  --foreground: 36 25% 85%;
+  /* J'Nickae Brand Colors */
+  --brand-bg:       #2B003B;
+  --brand-purple:   #3F0A57;
+  --brand-gold:     #D4AF37;
+  --brand-cream:    #F8F4EC;
+  --brand-gold-dim: rgba(212, 175, 55, 0.18);
+  --brand-gold-mid: rgba(212, 175, 55, 0.45);
 
-  --card: 30 6% 10%;
-  --card-foreground: 36 25% 85%;
-
-  --border: 36 10% 16%;
-  --input: 36 10% 16%;
-  --ring: 36 52% 57%;
-
-  --primary: 36 52% 57%;
-  --primary-foreground: 30 8% 6%;
-
-  --secondary: 30 6% 14%;
-  --secondary-foreground: 36 20% 75%;
-
-  --muted: 30 6% 13%;
-  --muted-foreground: 36 12% 52%;
-
-  --accent: 36 52% 57%;
-  --accent-foreground: 30 8% 6%;
-
-  --gold: 36 52% 57%;
-  --ivory: 36 40% 92%;
+  --background: #2B003B;
+  --foreground: #F8F4EC;
+  --card: #3F0A57;
+  --card-foreground: #F8F4EC;
+  --border: rgba(212, 175, 55, 0.15);
+  --input: #3F0A57;
+  --ring: #D4AF37;
+  --primary: #D4AF37;
+  --primary-foreground: #2B003B;
+  --secondary: #3F0A57;
+  --secondary-foreground: #F8F4EC;
+  --muted: #3F0A57;
+  --muted-foreground: rgba(248, 244, 236, 0.5);
+  --accent: #D4AF37;
+  --accent-foreground: #2B003B;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -72,7 +60,8 @@
 
 @layer base {
   * {
-    @apply border-border box-border;
+    box-sizing: border-box;
+    border-color: var(--border);
   }
 
   html {
@@ -80,15 +69,16 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
     font-family: var(--app-font-sans);
-    background-color: hsl(30, 8%, 6%);
-    color: hsl(36, 25%, 85%);
+    background-color: var(--brand-bg);
+    color: var(--brand-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background: hsl(36, 52%, 57%, 0.3);
-    color: hsl(36, 40%, 92%);
+    background: rgba(212, 175, 55, 0.25);
+    color: #F8F4EC;
   }
 }
 
@@ -98,46 +88,30 @@
   }
 
   .text-gold {
-    color: hsl(36, 52%, 57%);
+    color: #D4AF37;
   }
 
-  .text-ivory {
-    color: hsl(36, 40%, 92%);
+  .text-cream {
+    color: #F8F4EC;
   }
 
-  .bg-gold {
-    background-color: hsl(36, 52%, 57%);
+  .bg-brand {
+    background-color: #2B003B;
+  }
+
+  .bg-purple {
+    background-color: #3F0A57;
   }
 
   .border-gold {
-    border-color: hsl(36, 52%, 57%);
-  }
-
-  .border-gold\/20 {
-    border-color: hsl(36 52% 57% / 0.2);
-  }
-
-  .border-gold\/40 {
-    border-color: hsl(36 52% 57% / 0.4);
+    border-color: #D4AF37;
   }
 
   .gold-glow {
-    text-shadow: 0 0 40px hsl(36 52% 57% / 0.3);
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.35);
   }
 
-  .letter-widest {
-    letter-spacing: 0.3em;
-  }
-
-  .letter-ultra {
-    letter-spacing: 0.5em;
-  }
-
-  .candle-gradient {
-    background: radial-gradient(
-      ellipse 60% 80% at 50% 100%,
-      hsl(36 52% 57% / 0.08) 0%,
-      transparent 70%
-    );
+  .purple-glow {
+    box-shadow: 0 0 80px rgba(212, 175, 55, 0.08);
   }
 }
