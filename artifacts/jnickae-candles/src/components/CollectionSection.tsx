@@ -77,7 +77,7 @@ function ProductCard({
   inView: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
-  const imgSrc = `${base}assets/${slug}-${suffix}.png`;
+  const imgSrc = `${base}assets/${slug}-${suffix}.webp`;
 
   return (
     <motion.div

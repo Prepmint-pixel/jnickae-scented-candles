@@ -18,9 +18,12 @@ export default function HeroSection() {
       {/* Hero image */}
       <motion.div style={{ y: imgY }} className="absolute inset-0 z-0 scale-110">
         <img
-          src={`${base}assets/hero-lifestyle.png`}
+          src={`${base}assets/hero-lifestyle.webp`}
           alt="J'Nickae luxury candle lifestyle"
           className="w-full h-full object-cover object-center"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
         {/* Layered overlays */}
         {/* Dark purple base overlay */}

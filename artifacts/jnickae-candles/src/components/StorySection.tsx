@@ -141,9 +141,11 @@ export default function StorySection() {
             >
               {/* Product image in story panel */}
               <motion.img
-                src={`${base}assets/sandalwood-12oz.png`}
+                src={`${base}assets/sandalwood-12oz.webp`}
                 alt="J'Nickae Sandalwood candle"
                 className="absolute inset-0 w-full h-full object-contain"
+                loading="lazy"
+                decoding="async"
                 style={{ scale: imgScale, padding: "2rem" }}
               />
 

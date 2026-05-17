@@ -165,9 +165,11 @@ export default function RitualSection() {
               className="absolute inset-[-10%] w-[120%] h-[120%]"
             >
               <img
-                src={`${import.meta.env.BASE_URL}assets/hero-lifestyle.png`}
+                src={`${import.meta.env.BASE_URL}assets/hero-lifestyle.webp`}
                 alt="Ritual mood"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
                 style={{ filter: "saturate(0.8) brightness(0.75)" }}
               />
             </motion.div>
