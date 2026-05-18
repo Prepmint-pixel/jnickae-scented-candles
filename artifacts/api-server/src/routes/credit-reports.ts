@@ -101,7 +101,7 @@ router.post("/credit-reports/analyze", upload.single("file"), async (req: Authen
 
   let pdfText = "";
   try {
-    const { default: pdfParse } = await import("pdf-parse");
+        const pdfParse = ((await import("pdf-parse")) as { default: (buf: Buffer) => Promise<{ text: string }> }).default;
     const parsed = await pdfParse(req.file.buffer);
     pdfText = parsed.text;
   } catch (err) {
