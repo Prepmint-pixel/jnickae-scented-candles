@@ -1,5 +1,5 @@
 {
             "installCommand": "pnpm install --no-frozen-lockfile",
             "buildCommand": "pnpm --filter ./artifacts/jnickae-candles run build",
-            "outputDirectory": "artifacts/jnickae-candles/dist"
+            "outputDirectory": "artifacts/jnickae-candles/dist/public"
 }
